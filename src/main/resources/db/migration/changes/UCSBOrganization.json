@@ -2,10 +2,10 @@
     {
         "changeSet": {
           "id": "UCSBOrganization-1",
-          "author": "ElaineH",
+          "author": "MattP",
           "preConditions": [
             {
-              "onFail": "ELAINE_RAN"
+              "onFail": "MARK_RAN"
             },
             {
               "not": [
@@ -25,7 +25,7 @@
                     "column": {
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "CONSTRAINT_2"
+                        "primaryKeyName": "CONSTRAINT_6"
                       },
                       "name": "ORGCODE",
                       "type": "VARCHAR(255)"
@@ -34,8 +34,7 @@
                   {
                     "column": {
                         "constraints": {
-                            "primaryKey": true,
-                            "primaryKeyName": "CONSTRAINT_2"
+                            "primaryKey": true
                           },
                       "name": "ORGTRANSLATIONSHORT",
                       "type": "VARCHAR(255)"
@@ -44,8 +43,7 @@
                   {
                     "column": {
                         "constraints": {
-                            "primaryKey": true,
-                            "primaryKeyName": "CONSTRAINT_2"
+                            "primaryKey": true
                           },
                       "name": "ORGTRANSLATION",
                       "type": "VARCHAR(255)"
