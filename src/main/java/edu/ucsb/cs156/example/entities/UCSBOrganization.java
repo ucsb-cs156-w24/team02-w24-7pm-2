@@ -23,7 +23,7 @@ public class UCSBOrganization {
 
     private String orgCode;
     private String orgTranslationShort;  
-    private String OrgTranslation;
+    private String orgTranslation;
     private boolean inactive;
     
 }
