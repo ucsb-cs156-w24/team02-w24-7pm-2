@@ -6,7 +6,7 @@
         "author": "LilianaN",
         "preConditions": [
           {
-            "onFail": "MARK_RAN"
+            "onFail": "LILIANA_RAN"
           },
           {
             "not": [
