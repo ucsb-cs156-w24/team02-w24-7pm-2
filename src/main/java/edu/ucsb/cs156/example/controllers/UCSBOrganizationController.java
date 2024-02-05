@@ -39,6 +39,17 @@ public class UCSBOrganizationController extends ApiController {
         return commons;
     }
 
+    @Operation(summary= "Get a single organization")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBOrganization getById(
+            @Parameter(name="code") @RequestParam String code) {
+        UCSBOrganization commons = ucsbOrganizationRepository.findById(code)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBOrganization.class, code));
+
+        return commons;
+    }
+
     @Operation(summary= "Create a new commons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
@@ -59,16 +70,5 @@ public class UCSBOrganizationController extends ApiController {
         UCSBOrganization savedCommons = ucsbOrganizationRepository.save(commons);
 
         return savedCommons;
-    }
-
-    @Operation(summary= "Get a single organization")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("")
-    public UCSBOrganization getById(
-            @Parameter(name="code") @RequestParam String code) {
-        UCSBOrganization commons = ucsbOrganizationRepository.findById(code)
-                .orElseThrow(() -> new EntityNotFoundException(UCSBOrganization.class, code));
-
-        return commons;
     }
 }
