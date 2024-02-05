@@ -34,9 +34,9 @@ public class UCSBOrganizationController extends ApiController {
     @Operation(summary= "List all ucsb organizations")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
-    public Iterable<UCSBOrganization> allOrganizations() {
-        Iterable<UCSBOrganization> organizations = ucsbOrganizationRepository.findAll();
-        return organizations;
+    public Iterable<UCSBOrganization> allCommonss() {
+        Iterable<UCSBOrganization> commons = ucsbOrganizationRepository.findAll();
+        return commons;
     }
 
     @Operation(summary= "Get a single organization")
@@ -44,16 +44,16 @@ public class UCSBOrganizationController extends ApiController {
     @GetMapping("")
     public UCSBOrganization getById(
             @Parameter(name="code") @RequestParam String code) {
-        UCSBOrganization organizations = ucsbOrganizationRepository.findById(code)
+        UCSBOrganization commons = ucsbOrganizationRepository.findById(code)
                 .orElseThrow(() -> new EntityNotFoundException(UCSBOrganization.class, code));
 
-        return organizations;
+        return commons;
     }
 
-    @Operation(summary= "Create a new organizations")
+    @Operation(summary= "Create a new commons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
-    public UCSBOrganization postorganizations(
+    public UCSBOrganization postCommons(
         @Parameter(name="orgCode") @RequestParam String orgCode,
         @Parameter(name="orgTranslationShort") @RequestParam String orgTranslationShort,
         @Parameter(name="orgTranslation") @RequestParam String orgTranslation,
@@ -61,21 +61,21 @@ public class UCSBOrganizationController extends ApiController {
         )
         {
 
-        UCSBOrganization organizations = new UCSBOrganization();
-        organizations.setOrgCode(orgCode);
-        organizations.setOrgTranslationShort(orgTranslationShort);
-        organizations.setOrgTranslation(orgTranslation);
-        organizations.setInactive(inactive);
+        UCSBOrganization commons = new UCSBOrganization();
+        commons.setOrgCode(orgCode);
+        commons.setOrgTranslationShort(orgTranslationShort);
+        commons.setOrgTranslation(orgTranslation);
+        commons.setInactive(inactive);
 
-        UCSBOrganization savedorganizations = ucsbOrganizationRepository.save(organizations);
+        UCSBOrganization savedCommons = ucsbOrganizationRepository.save(commons);
 
-        return savedorganizations;
+        return savedCommons;
     }
 
     @Operation(summary= "Update a single organization")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
-    public UCSBOrganization updateOrganization(
+    public UCSBOrganization updateOrganizations(
             @Parameter(name="code") @RequestParam String code,
             @RequestBody @Valid UCSBOrganization incoming) {
 
@@ -84,7 +84,7 @@ public class UCSBOrganizationController extends ApiController {
 
 
         organizations.setOrgCode(incoming.getOrgCode());  
-        organizations.setOrgTranslationShort(incoming.getOrgTranslationShort());
+        organizations.setOrgTranslationShort(incoming.getOrgTranslationShort());  
         organizations.setOrgTranslation(incoming.getOrgTranslation());
         organizations.setInactive(incoming.getInactive());
 
