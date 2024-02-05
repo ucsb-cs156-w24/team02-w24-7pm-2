@@ -61,18 +61,18 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
             // arrange
 
-            when(ucsbOrganizationRepository.findById(eq("ucsb-skincare-team"))).thenReturn(Optional.empty());
+            when(ucsbOrganizationRepository.findById(eq("SENTINELS"))).thenReturn(Optional.empty());
 
             // act
-            MvcResult response = mockMvc.perform(get("/api/ucsborganization?code=ucsb-skincare-team"))
+            MvcResult response = mockMvc.perform(get("/api/ucsborganization?orgCode=SENTINELS"))
                             .andExpect(status().isNotFound()).andReturn();
 
             // assert
 
-            verify(ucsbOrganizationRepository, times(1)).findById(eq("ucsb-skincare-team"));
+            verify(ucsbOrganizationRepository, times(1)).findById(eq("SENTINELS"));
             Map<String, Object> json = responseToJson(response);
             assertEquals("EntityNotFoundException", json.get("type"));
-            assertEquals("UCSBOrganization with id ucsb-skincare-team not found", json.get("message"));
+            assertEquals("UCSBOrganization with id SENTINELS not found", json.get("message"));
     }
 
     @WithMockUser(roles = { "USER" })
@@ -143,7 +143,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
             // act
             MvcResult response = mockMvc.perform(
-                            post("/api/ucsborganization/post?code=OSLI&orgTranslationShort=STUDENT LIFE&horgTranslation=OFFICE OF STUDENT LIFE&inactive=false")
+                            post("/api/ucsborganization/post?code=OSLI&orgTranslationShort=STUDENT LIFE&orgTranslation=OFFICE OF STUDENT LIFE&inactive=false")
                                             .with(csrf()))
                             .andExpect(status().isOk()).andReturn();
 
