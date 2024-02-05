@@ -192,4 +192,39 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
         assertEquals(expectedJson, responseString);
         }
 
+    // Tests for GET /api/ucsborganization?...
+
+    @Test
+    public void logged_out_users_cannot_get_by_id() throws Exception {
+        mockMvc.perform(get("/api/ucsborganization?code=SKY"))
+                .andExpect(status().is(403)); // logged out users can't get by id
+    }
+
+    @WithMockUser(roles = { "USER" })
+    @Test
+    public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
+
+        // arrange
+
+        UCSBOrganization OSLI = UCSBOrganization.builder()
+                .orgCode("OSLI")
+                .orgTranslationShort("STUDENT LIFE")
+                .orgTranslation("OFFICE OF STUDENT LIFE")
+                .inactive(false)
+                .build();
+
+        when(ucsbOrganizationRepository.findById(eq("OSLI"))).thenReturn(Optional.of(OSLI));
+
+        // act
+        MvcResult response = mockMvc.perform(get("/api/ucsborganization?code=OSLI"))
+                .andExpect(status().isOk()).andReturn();
+
+        // assert
+
+        verify(ucsbOrganizationRepository, times(1)).findById(eq("OSLI"));
+        String expectedJson = mapper.writeValueAsString(OSLI);
+        String responseString = response.getResponse().getContentAsString();
+        assertEquals(expectedJson, responseString);
+    }
+
 }
