@@ -33,27 +33,18 @@
                   },
                   {
                     "column": {
-                        "constraints": {
-                            "primaryKey": true
-                          },
                       "name": "ORGTRANSLATIONSHORT",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                        "constraints": {
-                            "primaryKey": true
-                          },
                       "name": "ORGTRANSLATION",
                       "type": "VARCHAR(255)"
                     }
                   },
                   {
                     "column": {
-                      "constraints": {
-                        "nullable": false
-                      },
                       "name": "INACTIVE",
                       "type": "BOOLEAN"
                     }
