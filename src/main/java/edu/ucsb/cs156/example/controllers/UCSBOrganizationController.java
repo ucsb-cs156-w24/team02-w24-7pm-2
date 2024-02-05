@@ -27,36 +27,48 @@ import javax.validation.Valid;
 @RestController
 @Slf4j
 public class UCSBOrganizationController extends ApiController {
+
     @Autowired
     UCSBOrganizationRepository ucsbOrganizationRepository;
 
-    @Operation(summary = "List all ucsb organizations")
+    @Operation(summary= "List all ucsb organizations")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
-    public Iterable<UCSBOrganization> allOrganizations() {
+    public Iterable<UCSBOrganization> allCommonss() {
         Iterable<UCSBOrganization> commons = ucsbOrganizationRepository.findAll();
         return commons;
     }
 
-    @Operation(summary= "Create a new organizations")
+    @Operation(summary= "Create a new commons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
-    public UCSBOrganization postOrganizations(
+    public UCSBOrganization postCommons(
         @Parameter(name="orgCode") @RequestParam String orgCode,
         @Parameter(name="orgTranslationShort") @RequestParam String orgTranslationShort,
         @Parameter(name="orgTranslation") @RequestParam String orgTranslation,
         @Parameter(name="inactive") @RequestParam boolean inactive
         )
-    {
-        UCSBOrganization organizations = new UCSBOrganization();
-        organizations.setOrgCode(orgCode);
-        organizations.setOrgTranslationShort(orgTranslationShort);
-        organizations.setOrgTranslation(orgTranslation);
-        organizations.setInactive(inactive);
+        {
 
-        UCSBOrganization savedOrganizations = ucsbOrganizationRepository.save(organizations);
-        return savedOrganizations;
+        UCSBOrganization commons = new UCSBOrganization();
+        commons.setOrgCode(orgCode);
+        commons.setOrgTranslationShort(orgTranslationShort);
+        commons.setOrgTranslation(orgTranslation);
+        commons.setInactive(inactive);
+
+        UCSBOrganization savedCommons = ucsbOrganizationRepository.save(commons);
+
+        return savedCommons;
     }
 
+    @Operation(summary= "Get a single organization")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBOrganization getById(
+            @Parameter(name="code") @RequestParam String code) {
+        UCSBOrganization commons = ucsbOrganizationRepository.findById(code)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBOrganization.class, code));
 
+        return commons;
+    }
 }
