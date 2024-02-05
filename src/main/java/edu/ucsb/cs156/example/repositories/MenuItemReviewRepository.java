@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MenuItemReviewRepository extends CrudRepository<UCSBDate, Long> {
-   Iterable<MenuItemReview> findAllByQuarterYYYYQ(String quarterYYYYQ);
+public interface MenuItemReviewRepository extends CrudRepository<MenuItemReview, Long> {
+   // Iterable<MenuItemReview> findAllByQuarterYYYYQ(String quarterYYYYQ);
 }
