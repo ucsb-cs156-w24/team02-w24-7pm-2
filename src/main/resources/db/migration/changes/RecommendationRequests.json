@@ -35,25 +35,7 @@
                   },
                   {
                     "column": {
-                      "name": "DONE",
-                      "type": "BOOLEAN"
-                    }
-                  },
-                  {
-                    "column": {
-                      "name": "DATENEEDED",
-                      "type": "TIMESTAMP"
-                    }
-                  },
-                  {
-                    "column": {
-                      "name": "DATEREQUESTED",
-                      "type": "TIMESTAMP"
-                    }
-                  },
-                  {
-                    "column": {
-                      "name": "EXPLANATION",
+                      "name": "REQUESTEREMAIL",
                       "type": "VARCHAR(255)"
                     }
                   },
@@ -65,8 +47,26 @@
                   },
                   {
                     "column": {
-                      "name": "REQUESTEREMAIL",
+                      "name": "EXPLANATION",
                       "type": "VARCHAR(255)"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "DATEREQUESTED",
+                      "type": "TIMESTAMP"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "DATENEEDED",
+                      "type": "TIMESTAMP"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "DONE",
+                      "type": "BOOLEAN"
                     }
                   }
                 ],
