@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
-@Tag(name = "RecommendationRequests")
+@Tag(name = "recommendationrequests")
 @RequestMapping("/api/recommendationrequests")
 @RestController
 @Slf4j
@@ -37,22 +37,23 @@ public class RecommendationRequestsController extends ApiController {
         return reqs;
     }
 
-    @Operation(summary = "Create a new request")
+    @Operation(summary = "Create a new recommendation request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public RecommendationRequests postRecommendationRequests(
 
             @Parameter(name = "requesterEmail") @RequestParam String requesterEmail,
             @Parameter(name = "professorEmail") @RequestParam String professorEmail,
-            @Parameter(name = "dateRequested") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
-            @Parameter(name = "dateNeeded") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
+            @Parameter(name = "explanation") @RequestParam String explanation,
+            @Parameter(name = "dateRequested") @RequestParam("dateRequested") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
+            @Parameter(name = "dateNeeded") @RequestParam("dateNeeded") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
             @Parameter(name = "done") @RequestParam Boolean done)
             throws JsonProcessingException {
 
         RecommendationRequests recommendationRequests = new RecommendationRequests();
         recommendationRequests.setRequesterEmail(requesterEmail);
         recommendationRequests.setProfessorEmail(professorEmail);
-        recommendationRequests.setExplanation(professorEmail);
+        recommendationRequests.setExplanation(explanation);
         recommendationRequests.setDateRequested(dateRequested);
         recommendationRequests.setDateNeeded(dateNeeded);
         recommendationRequests.setDone(done);
