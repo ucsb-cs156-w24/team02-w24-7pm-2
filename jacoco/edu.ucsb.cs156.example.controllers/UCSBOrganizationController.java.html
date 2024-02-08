@@ -92,5 +92,17 @@ import javax.validation.Valid;
 
 <span class="fc" id="L93">        return organizations;</span>
     }
+
+    @Operation(summary= &quot;Delete a UCSBOrganization&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
+    @DeleteMapping(&quot;&quot;)
+    public Object deleteOrganizations(
+            @Parameter(name=&quot;code&quot;) @RequestParam String code) {
+<span class="fc" id="L101">        UCSBOrganization organizations = ucsbOrganizationRepository.findById(code)</span>
+<span class="fc" id="L102">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, code));</span>
+
+<span class="fc" id="L104">        ucsbOrganizationRepository.delete(organizations);</span>
+<span class="fc" id="L105">        return genericMessage(&quot;UCSBOrganization with id %s deleted&quot;.formatted(code));</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
