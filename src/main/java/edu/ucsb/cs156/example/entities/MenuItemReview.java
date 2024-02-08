@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+// import javax.persistence.Column; 
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class MenuItemReview {
   private long id;
   private long itemId;
   private String reviewerEmail;
-  private int stars; 
+  private int stars;
   private LocalDateTime dateReviewed;
   private String comments;
 }
