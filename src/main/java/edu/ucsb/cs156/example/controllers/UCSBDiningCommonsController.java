@@ -102,9 +102,9 @@ public class UCSBDiningCommonsController extends ApiController {
 
 
         commons.setName(incoming.getName());  
-        commons.setHasSackMeal(incoming.isHasSackMeal());
-        commons.setHasTakeOutMeal(incoming.isHasTakeOutMeal());
-        commons.setHasDiningCam(incoming.isHasDiningCam());
+        commons.setHasSackMeal(incoming.getHasSackMeal());
+        commons.setHasTakeOutMeal(incoming.getHasTakeOutMeal());
+        commons.setHasDiningCam(incoming.getHasDiningCam());
         commons.setLatitude(incoming.getLatitude());
         commons.setLongitude(incoming.getLongitude());
 
