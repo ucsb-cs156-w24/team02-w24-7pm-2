@@ -34,7 +34,7 @@
                   },
                   {
                     "column": {
-                      "name": "DININGCOMMONSCODE",
+                      "name": "DINING_COMMONS_CODE",
                       "type": "VARCHAR(255)"
                     }
                   },
