@@ -42,7 +42,7 @@
                   {
                     "column": {
                       "name": "TEAM_ID",
-                      "type": "BIGINT"
+                      "type": "VARCHAR(255)"
                     }
                   },
                   {
