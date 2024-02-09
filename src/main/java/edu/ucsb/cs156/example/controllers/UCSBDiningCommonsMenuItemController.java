@@ -63,16 +63,16 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return savedUcsbDiningCommonsMenuItem;
     }
 
-    // @Operation(summary= "Get a single date")
-    // @PreAuthorize("hasRole('ROLE_USER')")
-    // @GetMapping("")
-    // public UCSBDate getById(
-    //         @Parameter(name="id") @RequestParam Long id) {
-    //     UCSBDate ucsbDate = ucsbDateRepository.findById(id)
-    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDate.class, id));
+    @Operation(summary= "Get a single dining common menu item")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBDiningCommonsMenuItem getById(
+            @Parameter(name="id") @RequestParam Long id) {
+        UCSBDiningCommonsMenuItem ucsbDiningCommonsMenuItem = ucsbDiningCommonsMenuItemRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommonsMenuItem.class, id));
 
-    //     return ucsbDate;
-    // }
+        return ucsbDiningCommonsMenuItem;
+    }
 
     // @Operation(summary= "Delete a UCSBDate")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
