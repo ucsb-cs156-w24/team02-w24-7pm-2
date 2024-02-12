@@ -226,12 +226,12 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
                                 .build();
 
                 RecommendationRequest recommendationRequestEdited = RecommendationRequest.builder()
-                                .requesterEmail("requester1@ucsb.edu")
-                                .professorEmail("professor1@ucsb.edu")
-                                .explanation("Masters")
+                                .requesterEmail("newrequester@ucsb.edu")
+                                .professorEmail("newprofessor1@ucsb.edu")
+                                .explanation("newexplanation")
                                 .dateRequested(dateRequested2)
                                 .dateNeeded(dateNeeded2)
-                                .done(true)
+                                .done(false)
                                 .build();
 
                 String requestBody = mapper.writeValueAsString(recommendationRequestEdited);
