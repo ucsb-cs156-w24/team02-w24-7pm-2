@@ -200,7 +200,7 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
                 verify(recommendationRequestRepository, times(1)).findById(eq(7L));
                 Map<String, Object> json = responseToJson(response);
                 assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("RecommendationRequest with id 7 not found", json.get("message"));
+                assertEquals("recommendation request with id 7 not found", json.get("message"));
         }
 
         // Tests for PUT /api/recommendationrequests?id=...
@@ -290,7 +290,7 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
                 // assert
                 verify(recommendationRequestRepository, times(1)).findById(67L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("Recommendation request with id 67 not found", json.get("message"));
+                assertEquals("recommendation request with id 67 not found", json.get("message"));
 
         }
 }
