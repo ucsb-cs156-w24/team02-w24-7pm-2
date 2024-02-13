@@ -37,6 +37,7 @@ public class ArticlesController extends ApiController {
     @Autowired
     ArticlesRepository articlesRepository;
 
+    
     @Operation(summary= "List all articles")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
@@ -53,7 +54,7 @@ public class ArticlesController extends ApiController {
             @Parameter(name="url") @RequestParam String url,
             @Parameter(name="explanation") @RequestParam String explanation,
             @Parameter(name="email") @RequestParam String email,
-            @Parameter(name="dateAdded (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateAdded") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate dateAdded) //consider swapping "LocalDateTime with just LocalDate"
+            @Parameter(name="dateAdded") @RequestParam("dateAdded") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateAdded) //consider swapping "LocalDateTime with just LocalDate"
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -69,7 +70,6 @@ public class ArticlesController extends ApiController {
         article.setDateAdded(dateAdded);
 
 
-        //UCSBDate savedUcsbDate = ucsbDateRepository.save(ucsbDate);
         Articles savedArticle = articlesRepository.save(article);
         return savedArticle;
     }
