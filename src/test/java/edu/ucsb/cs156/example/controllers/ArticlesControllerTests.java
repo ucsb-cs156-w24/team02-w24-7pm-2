@@ -205,7 +205,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 verify(articlesRepository, times(1)).findById(eq(7L));
                 Map<String, Object> json = responseToJson(response);
                 assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("Article with id 7 not found", json.get("message"));
+                assertEquals("Articles with id 7 not found", json.get("message"));
         }
 
 
@@ -260,7 +260,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 // assert
                 verify(articlesRepository, times(1)).findById(15L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("Article with id 15 not found", json.get("message"));
+                assertEquals("Articles with id 15 not found", json.get("message"));
         }
 
         // Tests for PUT /api/articles?id=... 
@@ -342,7 +342,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 // assert
                 verify(articlesRepository, times(1)).findById(67L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("Article with id 67 not found", json.get("message"));
+                assertEquals("Articles with id 67 not found", json.get("message"));
 
         }
 }
