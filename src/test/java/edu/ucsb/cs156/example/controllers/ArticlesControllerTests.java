@@ -283,10 +283,10 @@ public class ArticlesControllerTests extends ControllerTestCase {
 
 
                 Articles article_new_ldt = Articles.builder()
-                .title("title")
-                .url("url")
-                .explanation("explanation")
-                .email("email")
+                .title("title2")
+                .url("url2")
+                .explanation("explanation2")
+                .email("email2")
                 .dateAdded(ldt2)
                 .build();
 
