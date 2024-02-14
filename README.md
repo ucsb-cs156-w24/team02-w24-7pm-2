@@ -1,5 +1,17 @@
 # STARTER-team02
 
+```
+| Table                       | Team Member  | Github Id     |
+|-----------------------------|--------------|---------------|
+| `UCSBDiningCommonsMenuItem` | Ashton    | ashton-wong      |
+| `UCSBOrganization`          | Elaine    | elaineeeho       |
+| `RecommendationRequest`     | Andy      | andy-gale        |
+| `MenuItemReview`            | Liliana   | nguyenliliana    |
+| `HelpRequest`               | Kavya     | Kavya75          |
+| `Articles`                  | Michael   | michaelw1985     |
+```
+
+
 Instructions: <https://ucsb-cs156.github.io/w24/lab/team02.html>
 
 TODO: change heading above to your repo name, e.g. `# team02-w24-6pm-4`
